@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Assessment Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* Ensure container max-width is consistent if needed */
+        .container { max-width: 850px; }
+        /* Add any results-specific style overrides here */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Medical Assessment Result</h1>
+
+        {% if error %}
+            <div class="error-message">
+                <h2>Error</h2>
+                <p>{{ error }}</p>
+            </div>
+        {% else %}
+            <div class="patient-details">
+                <h2>Patient Summary</h2>
+                <dl>
+                    <dt>Name:</dt>
+                    <dd>{{ name | default('N/A') | e }}</dd>
+
+                    <dt>Age:</dt>
+                    <dd>{{ age | default('N/A') | e }}</dd>
+
+                    <dt>Gender:</dt>
+                    <dd>{{ gender | default('N/A') | e }}</dd>
+
+                    <dt>Hypertension:</dt>
+                    <dd>{{ hypertension | default('N/A') | e }}</dd>
+
+                    <dt>Diabetes:</dt>
+                    <dd>{{ diabetes | default('N/A') | e }}</dd>
+
+                    <dt>Reported Symptoms:</dt>
+                    <dd>{{ symptoms | default('N/A') | e }}</dd>
+
+                    <dt>Provided Medical History:</dt>
+                    <dd>{{ medical_history | default('N/A') | e }}</dd>
+                </dl>
+            </div>
+
+            <div class="result-section">
+                <h2>Assessment Results</h2>
+                <p>
+                    <strong>Potential Condition:</strong>
+                    {{ model_condition | default('Unavailable', true) | e }}
+
+                    {% if from_cache %}
+                        <span class="cache-notice">(Result based on previously seen symptoms combination)</span>
+                    {% endif %}
+                </p>
+                <p><strong>Retrieved Information (Discuss with Doctor):</strong></p>
+                <ul>
+                    <li><strong>Advice/Medications Context:</strong> {{ retrieved_advice | default('N/A', true) | e }}</li>
+                    <li><strong>Lifestyle Tips Context:</strong> {{ retrieved_tips | default('N/A', true) | e }}</li>
+                </ul>
+
+                {% if not from_cache and model_condition and 'unavailable' not in model_condition.lower() and 'error' not in model_condition.lower() and 'determine condition' not in model_condition.lower() and 'engine not ready' not in model_condition.lower() and 'invalid symptoms' not in model_condition.lower() %}
+                   <p><small>Note: This information was processed for the symptoms entered and saved for potential future reference.</small></p>
+                {% endif %}
+           </div>
+
+            <div class="disclaimer">
+                <h2>Important Disclaimer</h2>
+                 <p>{{ disclaimer | default('Please consult a qualified healthcare provider for any health concerns.', true) | e }}</p>
+            </div>
+
+        {% endif %} {# End of the main 'if not error' block #}
+
+        <br>
+        <a href="/" class="back-link">Go back to the form</a>
+        <style>
+            .back-link { /* Basic styling for the link */
+                display: inline-block;
+                margin-top: 15px;
+                padding: 8px 15px;
+                background-color: #6c757d; /* Secondary color */
+                color: white;
+                text-decoration: none;
+                border-radius: 4px;
+                transition: background-color 0.2s ease;
+            }
+            .back-link:hover {
+                background-color: #5a6268;
+            }
+        </style>
+    </div>
+</body>
+</html>

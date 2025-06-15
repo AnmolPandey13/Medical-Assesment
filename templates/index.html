@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Centre Assessment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+<body>
+    <div class="container">
+        <h1>Patient Information Form</h1>
+        {% if load_status and load_status != 'OK' %}
+            <p style="color: orange; text-align: center; margin-bottom: 15px;">{{ load_status }}</p>
+        {% endif %}
+
+        <form action="/process" method="post" id="patient-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" min="1" max="120" required>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender">
+                <option value=""></option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <fieldset>
+                <legend onclick="toggleSection('history_options_container', this)">Medical History</legend>
+                <div id="history_options_container" class="collapsible-content">
+                    <p>Select any relevant past medical history (select 'None' if applicable):</p>
+                    <div class="checkbox-group">
+                        {% for option in history_options %}
+                        <label>
+                            {% if option == 'None' %}
+                            <input type="checkbox" name="selected_history" value="None" id="history_none_checkbox" onclick="handleNoneCheckbox('history_none_checkbox', 'selected_history', 'history_other_checkbox');"> {{ option }}
+                            {% else %}
+                            <input type="checkbox" name="selected_history" value="{{ option }}" class="history_item_checkbox" onclick="handleOtherHistoryCheckbox('history_none_checkbox', 'selected_history', 'history_other_checkbox');"> {{ option }}
+                            {% endif %}
+                        </label>
+                        {% endfor %}
+                        <label>
+                            <input type="checkbox" id="history_other_checkbox" name="history_other_trigger" onclick="toggleOtherInput('history_other_checkbox', 'other_history_text'); handleOtherHistoryCheckbox('history_none_checkbox', 'selected_history', 'history_other_checkbox');"> Other (Please specify below)
+                        </label>
+                    </div>
+                    <textarea id="other_history_text" name="other_history" class="other-input" rows="3" placeholder="Specify other medical history, separated by commas..."></textarea>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Existing Diagnosed Conditions</legend>
+                 <label style="display: inline-block; margin-right: 20px; font-weight: normal;">
+                    <input type="checkbox" name="hypertension" value="yes" style="margin-right: 8px; vertical-align: middle;"> Hypertension
+                </label>
+                 <label style="display: inline-block; font-weight: normal;">
+                    <input type="checkbox" name="diabetes" value="yes" style="margin-right: 8px; vertical-align: middle;"> Diabetes
+                </label>
+            </fieldset>
+
+            <fieldset>
+                <legend onclick="toggleSection('symptom_options_container', this)">Symptoms</legend>
+                <div id="symptom_options_container" class="collapsible-content">
+                    <p>Select all symptoms you are experiencing (you can select multiple):</p>
+                     <div class="checkbox-group">
+                        {% for option in symptom_options %}
+                        <label>
+                            <input type="checkbox" name="selected_symptoms" value="{{ option }}" onchange="updateSymptomRequirement()"> {{ option }}
+                        </label>
+                        {% endfor %}
+                        <label>
+                            <input type="checkbox" id="symptoms_other_checkbox" name="symptoms_other_trigger" onclick="toggleOtherInput('symptoms_other_checkbox', 'other_symptoms_text')"> Other (Please specify below)
+                        </label>
+                    </div>
+                     <textarea id="other_symptoms_text" name="other_symptoms" class="other-input" rows="3" placeholder="Specify other symptoms, separated by commas..."></textarea>
+                     <small>Please select at least one symptom or specify using 'Other'.</small>
+                 </div>
+            </fieldset>
+
+            <button type="submit">Get Assessment</button>
+        </form>
+    </div>
+
+    <script>
+        function toggleSection(elementId, legendElement) {
+            var content = document.getElementById(elementId);
+            if (content.style.display === "block") {
+                content.style.display = "none";
+                legendElement.classList.remove('open');
+            } else {
+                content.style.display = "block";
+                legendElement.classList.add('open');
+            }
+        }
+
+        function toggleOtherInput(checkboxId, textareaId) {
+            var checkbox = document.getElementById(checkboxId);
+            var textarea = document.getElementById(textareaId);
+            if (!checkbox || !textarea) return;
+
+            if (checkbox.checked) {
+                textarea.style.display = "block";
+            } else {
+                textarea.style.display = "none";
+                textarea.value = "";
+            }
+             if (textareaId === 'other_symptoms_text') {
+                 updateSymptomRequirement();
+             }
+             if (textareaId === 'other_history_text' && checkbox.checked) {
+                 // If 'Other History' is checked, ensure 'None' gets unchecked
+                 var noneCheckbox = document.getElementById('history_none_checkbox');
+                 if(noneCheckbox) noneCheckbox.checked = false;
+             }
+        }
+
+        function handleNoneCheckbox(noneCheckboxId, groupName, otherCheckboxId) {
+            var noneCheckbox = document.getElementById(noneCheckboxId);
+            var otherCheckboxes = document.querySelectorAll(`input[name="${groupName}"]:not(#${noneCheckboxId})`);
+            var otherTriggerCheckbox = document.getElementById(otherCheckboxId);
+            var otherTextarea = document.getElementById('other_history_text');
+
+            if (noneCheckbox && noneCheckbox.checked) {
+                otherCheckboxes.forEach(function(checkbox) { checkbox.checked = false; });
+                if (otherTriggerCheckbox) { otherTriggerCheckbox.checked = false; }
+                // Also hide the 'Other' textarea if 'None' is checked
+                if (otherTextarea) { otherTextarea.style.display = 'none'; otherTextarea.value = ''; }
+            }
+        }
+
+        function handleOtherHistoryCheckbox(noneCheckboxId, groupName, otherCheckboxId) {
+             var noneCheckbox = document.getElementById(noneCheckboxId);
+             // If any specific history item or 'Other' is checked, uncheck 'None'
+             var anyOtherChecked = false;
+             // Check specific history items
+             document.querySelectorAll(`input[name="${groupName}"]:not(#${noneCheckboxId})`).forEach(function(cb){ if(cb.checked) anyOtherChecked = true; });
+             // Check the 'Other' trigger checkbox itself
+             var otherTriggerCheckbox = document.getElementById(otherCheckboxId);
+             if(otherTriggerCheckbox && otherTriggerCheckbox.checked) {
+                anyOtherChecked = true;
+             }
+
+             if (anyOtherChecked && noneCheckbox && noneCheckbox.checked) {
+                 noneCheckbox.checked = false;
+             }
+        }
+
+        function updateSymptomRequirement() {
+             const otherTextarea = document.getElementById('other_symptoms_text');
+             const otherCheckbox = document.getElementById('symptoms_other_checkbox');
+             if (otherCheckbox && otherTextarea) {
+                otherTextarea.required = otherCheckbox.checked;
+             }
+        }
+
+         document.addEventListener('DOMContentLoaded', (event) => {
+             toggleOtherInput('history_other_checkbox', 'other_history_text');
+             toggleOtherInput('symptoms_other_checkbox', 'other_symptoms_text');
+             if (document.getElementById('history_none_checkbox') && document.getElementById('history_none_checkbox').checked) {
+                handleNoneCheckbox('history_none_checkbox', 'selected_history', 'history_other_checkbox');
+             }
+         });
+
+         document.querySelectorAll('input[name="selected_symptoms"]').forEach(item => {
+             item.addEventListener('change', event => {
+                 updateSymptomRequirement();
+             })
+         });
+
+    </script>
+</body>
+</html>
