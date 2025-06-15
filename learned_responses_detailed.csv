@@ -1,0 +1,28 @@
+SymptomsKey,PredictedCondition,Symptoms,Past Medical History,Age,Gender,Has Hypertension,Has Diabetes,Has Asthma,Has Breathing Issues
+"abdominal pain,constipation,painful urination",Digestive Issue,"Abdominal Pain, Constipation, Painful Urination",,44,Male,1,1,0,0
+headache,High Blood Pressure,Headache,Kidney Issues,23,Male,1,0,0,0
+"chest pain,fever,headache",High Blood Pressure,"Chest Pain, Fever, Headache",High Blood Pressure,24,Male,1,0,0,0
+"fever,shortness of breath",Heart Problem,"Fever, Shortness of Breath",,22,Male,1,0,0,0
+"abdominal pain,back pain,changes in bowel habits,chest pain,chills,confusion,constipation,cough,diarrhea,dizziness,excessive sweating,fatigue,fever,frequent urination,hair loss,headache,hearing issues,increased anxiety,increased hunger,increased thirst,itching,joint pain,leg ankle swelling,memory problems,mood changes,muscle pain,nausea,neck pain,numbness tingling,painful urination,palpitations,rash,redness,runny nose,shortness of breath,skin changes lesions color,sleep issues,sore throat,speech problems,stiff neck,stuffy nose,swallowing difficulty,swelling,tremors,vision changes,vomiting,weakness,weight gain",High Blood Pressure,"Abdominal Pain, Back Pain, Changes in Bowel Habits, Chest Pain, Chills, Confusion, Constipation, Cough, Diarrhea, Dizziness, Excessive Sweating, Fatigue, Fever, Frequent Urination, Hair Loss, Headache, Hearing Issues, Increased Anxiety, Increased Hunger, Increased Thirst, Itching, Joint Pain, Leg Ankle Swelling, Memory Problems, Mood Changes, Muscle Pain, Nausea, Neck Pain, Numbness Tingling, Painful Urination, Palpitations, Rash, Redness, Runny Nose, Shortness of Breath, Skin Changes Lesions Color, Sleep Issues, Sore Throat, Speech Problems, Stiff Neck, Stuffy Nose, Swallowing Difficulty, Swelling, Tremors, Vision Changes, Vomiting, Weakness, Weight Gain","Alcohol Use History, Allergies, Anemia, Asthma, Blood Clotting Issues, Breathing Issues, Cancer History, Diabetes, Heart Problems, High Blood Pressure, Infections, Joint Muscle Problems, Kidney Issues, Liver Issues, Mental Health Conditions, Neurological Issues, Recent Injury, Recent Surgery, Skin Conditions, Smoking History, Stomach Digestive Issues, Thyroid Issues",25,Male,1,1,1,1
+"itching,redness",Allergic Reaction,"Itching, Redness",Allergies,23,Male,1,0,0,0
+"chest pain,headache",High Blood Pressure,"Chest Pain, Headache",,25,Male,1,0,0,0
+"back pain,confusion,hair loss,increased anxiety,sore throat,weakness,weight gain",Diabetes,"Back Pain, Confusion, Hair Loss, Increased Anxiety, Sore Throat, Weakness, Weight Gain","Alcohol Use History, Mental Health Conditions, Skin Conditions, Stomach Digestive Issues, Thyroid Issues",26,Male,0,0,0,0
+"cough,weakness,weight loss",Thyroid Problem,"Cough, Weakness, Weight Loss",Skin Conditions,22,Male,1,0,0,0
+"weakness,weight loss",Thyroid Problem,"Weakness, Weight Loss",Skin Conditions,20,Male,1,0,0,0
+"back pain,sleep issues,weakness,weight loss",Digestive Issue,"Back Pain, Sleep Issues, Weakness, Weight Loss",Smoking History,23,Male,1,0,0,0
+"back pain,sleep issues,weakness",Thyroid Problem,"Back Pain, Sleep Issues, Weakness",Smoking History,23,Male,1,0,0,0
+chest pain,High Blood Pressure,Chest Pain,"Cancer History, Diabetes, High Blood Pressure, Kidney Issues",24,Male,1,0,0,0
+chest pain,High Blood Pressure,Chest Pain,Heart Problems,23,Male,1,0,0,0
+abdominal pain,Digestive Issue,Abdominal Pain,Heart Problems,23,Male,1,0,0,0
+"hair loss,neck pain",Urinary Tract Issue,"Hair Loss, Neck Pain",Heart Problems,23,Male,1,0,0,0
+"cough,sleep issues,vomiting",Thyroid Problem,"Cough, Sleep Issues, Vomiting",,23,Male,1,0,0,0
+"cough,sleep issues,vomiting",Thyroid Problem,"Cough, Sleep Issues, Vomiting",,23,Male,1,0,0,0
+"fever,headache",High Blood Pressure,"Fever, Headache",,23,Male,0,0,0,0
+"abdominal pain,fever,headache",High Blood Pressure,"Abdominal Pain, Fever, Headache",,23,Male,0,0,0,0
+"abdominal pain,diarrhea",Digestive Issue,"Abdominal Pain, Diarrhea",,23,Male,0,0,0,0
+chest pain,High Blood Pressure,Chest Pain,,23,Male,0,0,0,0
+"fever,vomiting",Respiratory Infection,"Fever, Vomiting",,23,Male,0,0,0,0
+"fever,vomiting",Respiratory Infection,"Fever, Vomiting",,23,Male,0,0,0,0
+"fever,headache,vomiting",High Blood Pressure,"Fever, Headache, Vomiting",,23,Male,0,0,0,0
+cough,Asthma,Cough,"Alcohol Use History, Infections",23,Male,0,1,0,0
+"confusion,hair loss,headache",High Blood Pressure,"Confusion, Hair Loss, Headache",Heart Problems,41,Male,1,0,0,0

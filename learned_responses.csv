@@ -1,0 +1,31 @@
+SymptomsKey,PredictedCondition,Advice,Tips"fever,vomiting,weakness",Anemia,"Iron supplements, dietary changes, consult a doctor for diagnosis and treatment",Eat iron rich foods
+"diarrhea,dizziness,fatigue,fever",High Blood Pressure,"Lifestyle changes diet exercise, medication if prescribed","Monitor blood pressure regularly, follow doctor's advice"
+"back pain,leg ankle swelling",Heart Problem,"Lifestyle changes, medication, medical procedures depending on the condition","Follow doctor's recommendations, maintain a healthy lifestyle"
+
+"abdominal pain,constipation,painful urination",Digestive Issue,"Over the counter remedies, dietary changes, consult a doctor if severe or persistent","Maintain a balanced diet, stay hydrated"
+headache,High Blood Pressure,"Lifestyle changes diet exercise, medication if prescribed","Monitor blood pressure regularly, follow doctor's advice"
+"chest pain,fever,headache",High Blood Pressure,"Lifestyle changes diet exercise, medication if prescribed","Monitor blood pressure regularly, follow doctor's advice"
+"fever,shortness of breath",Heart Problem,"Lifestyle changes, medication, medical procedures depending on the condition","Follow doctor's recommendations, maintain a healthy lifestyle"
+"abdominal pain,back pain,changes in bowel habits,chest pain,chills,confusion,constipation,cough,diarrhea,dizziness,excessive sweating,fatigue,fever,frequent urination,hair loss,headache,hearing issues,increased anxiety,increased hunger,increased thirst,itching,joint pain,leg ankle swelling,memory problems,mood changes,muscle pain,nausea,neck pain,numbness tingling,painful urination,palpitations,rash,redness,runny nose,shortness of breath,skin changes lesions color,sleep issues,sore throat,speech problems,stiff neck,stuffy nose,swallowing difficulty,swelling,tremors,vision changes,vomiting,weakness,weight gain",High Blood Pressure,"Lifestyle changes diet exercise, medication if prescribed","Monitor blood pressure regularly, follow doctor's advice"
+"itching,redness",Allergic Reaction,"Antihistamines mild, seek immediate medical help for severe reactions",Avoid known allergens
+"chest pain,headache",High Blood Pressure,"Lifestyle changes diet exercise, medication if prescribed","Monitor blood pressure regularly, follow doctor's advice"
+"back pain,confusion,hair loss,increased anxiety,sore throat,weakness,weight gain",Diabetes,"Dietary management, exercise, medication oral or insulin, regular monitoring","Follow a diabetic diet, regular exercise, monitor blood sugar"
+"cough,weakness,weight loss",Thyroid Problem,"Medication hormone replacement or antithyroid, regular monitoring",Follow doctor's recommendations
+"weakness,weight loss",Thyroid Problem,"Medication hormone replacement or antithyroid, regular monitoring",Follow doctor's recommendations
+"back pain,sleep issues,weakness,weight loss",Digestive Issue,"Over the counter remedies, dietary changes, consult a doctor if severe or persistent","Maintain a balanced diet, stay hydrated"
+"back pain,sleep issues,weakness",Thyroid Problem,"Medication hormone replacement or antithyroid, regular monitoring",Follow doctor's recommendations
+"chest pain,High Blood Pressure,"Lifestyle changes diet exercise, medication if prescribed","If pain continues Consult a Doctor Immediately,Monitor blood pressure regularly, follow doctor's advice"
+chest pain,High Blood Pressure,"Lifestyle changes diet exercise, medication if prescribed","Monitor blood pressure regularly, follow doctor's advice"
+abdominal pain,Digestive Issue,"Over the counter remedies, dietary changes, consult a doctor if severe or persistent","Maintain a balanced diet, stay hydrated"
+"hair loss,neck pain",Urinary Tract Issue,"Increase fluid intake, consult a doctor antibiotics may be needed",Practice good hygiene
+"cough,sleep issues,vomiting",Thyroid Problem,"Medication hormone replacement or antithyroid, regular monitoring",Follow doctor's recommendations
+"cough,sleep issues,vomiting",Thyroid Problem,"Medication hormone replacement or antithyroid, regular monitoring",Follow doctor's recommendations
+"fever,headache",High Blood Pressure,"Lifestyle changes diet exercise, medication if prescribed","Monitor blood pressure regularly, follow doctor's advice"
+"abdominal pain,fever,headache",High Blood Pressure,"Lifestyle changes diet exercise, medication if prescribed","Monitor blood pressure regularly, follow doctor's advice"
+"abdominal pain,diarrhea",Digestive Issue,"Over the counter remedies, dietary changes, consult a doctor if severe or persistent","Maintain a balanced diet, stay hydrated"
+chest pain,High Blood Pressure,"Lifestyle changes diet exercise, medication if prescribed","Monitor blood pressure regularly, follow doctor's advice, See doctor if pain continues"
+"fever,vomiting",Respiratory Infection,"Rest, fluids, consult a doctor for diagnosis and treatment may include medication","Avoid smoking, maintain good hygiene"
+"fever,vomiting",Respiratory Infection,"Rest, fluids, consult a doctor for diagnosis and treatment may include medication","Avoid smoking, maintain good hygiene"
+"fever,headache,vomiting",High Blood Pressure,"Lifestyle changes diet exercise, medication if prescribed","Monitor blood pressure regularly, follow doctor's advice"
+cough,Asthma,Inhalers bronchodilators corticosteroids,"Avoid triggers, use inhaler as prescribed"
+"confusion,hair loss,headache",High Blood Pressure,"Lifestyle changes diet exercise, medication if prescribed","Monitor blood pressure regularly, follow doctor's advice"
