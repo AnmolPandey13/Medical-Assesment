@@ -1,0 +1,299 @@
+/* static/styles.css */
+/* Combined layout/functionality with user's color theme */
+
+/* Basic Reset & Body Style */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font from user file */
+  line-height: 1.6;
+  /* Gradient background from user file */
+  background: linear-gradient(to right, #e0f7fa, #e1bee7);
+  color: #333; /* Default text color */
+  padding: 20px; /* Use padding from previous functional CSS */
+  font-size: 16px;
+}
+
+/* Container Styling */
+.container {
+  max-width: 850px; /* Use width from functional CSS */
+  margin: 30px auto;
+  padding: 30px 40px;
+  background-color: white; /* Background from user file */
+  border-radius: 15px; /* Rounded corners from user file */
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15); /* Shadow from user file */
+  border: 1px solid #e7e7e7; /* Keep a light border */
+}
+
+/* Header Styling */
+h1 {
+  color: #4a148c; /* Dark purple from user file */
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 600;
+  border-bottom: 2px solid #e1bee7; /* Use theme color for border */
+  padding-bottom: 15px;
+}
+
+/* Use heading color for results page section titles */
+.result-section h2, .patient-details h2 {
+  margin-top: 0;
+  font-size: 1.2em;
+  color: #4a148c; /* Dark purple from user file */
+  border-bottom: 1px solid #e1bee7; /* Theme color border */
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+/* Form Element Styling */
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold; /* Keep bold from user file */
+  color: #006064; /* Dark cyan label color from user file */
+  font-size: 0.95em;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px; /* Use functional CSS padding */
+  margin-top: 5px; /* Use user file margin-top */
+  margin-bottom: 18px; /* Use functional CSS margin-bottom */
+  border: 1px solid #ccc; /* Use user file border */
+  border-radius: 8px; /* Use user file border-radius */
+  font-size: 16px; /* Use user file font-size */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+  border-color: #6a1b9a; /* Use theme purple for focus */
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(106, 27, 154, 0.25); /* Purple glow */
+}
+
+select {
+   /* Keep custom arrow, change fill color */
+   appearance: none;
+   background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%236a1b9a%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+   background-repeat: no-repeat;
+   background-position: right 1rem center;
+   background-size: 0.7em;
+   padding-right: 2.5rem;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+fieldset {
+  border: 1px solid #e1bee7; /* Use theme color for border */
+  border-radius: 8px; /* Match input radius */
+  padding: 20px;
+  margin-bottom: 25px;
+  background-color: #fafafa; /* Light background for contrast */
+}
+
+/* Clickable Legend Styling */
+legend {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.1em;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #e0f7fa; /* Theme cyan */
+  margin-bottom: 15px;
+  display: inline-block;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  color: #006064; /* Dark cyan text */
+}
+legend:hover {
+  background-color: #b2ebf2; /* Lighter cyan on hover */
+}
+legend::after {
+   content: ' \25BC'; /* Down arrow */
+   font-size: 0.7em;
+   margin-left: 8px;
+   color: #6a1b9a; /* Theme purple */
+   display: inline-block;
+   transition: transform 0.2s ease-in-out;
+}
+legend.open::after {
+   transform: rotate(180deg); /* Up arrow */
+}
+
+/* Initially hidden content */
+.collapsible-content {
+  display: none;
+  padding-top: 10px;
+  border-top: 1px solid #e1bee7; /* Theme color separator */
+  margin-top: 15px;
+}
+.collapsible-content p:first-child {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #495057;
+}
+
+/* Checkbox Group Layout (CSS Grid) */
+.checkbox-group {
+  max-height: 280px;
+  overflow-y: auto;
+  border: 1px solid #e1bee7; /* Theme color */
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  background-color: #f8f9fa; /* Light background */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  font-weight: normal; /* Normal weight for options */
+  color: #006064; /* Dark cyan label color from user file */
+  margin-bottom: 0;
+  padding: 8px 10px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+.checkbox-group label:hover {
+  background-color: #e0f7fa; /* Light cyan hover */
+}
+.checkbox-group input[type="checkbox"] {
+  margin-right: 10px;
+  vertical-align: middle;
+  width: 1.1em;
+  height: 1.1em;
+  cursor: pointer;
+  accent-color: #6a1b9a; /* Theme purple checkmark */
+}
+
+/* Styling for the "Other" textarea */
+.other-input {
+  display: none;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 15px;
+}
+
+/* Submit Button */
+button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 14px 20px;
+  background-color: #6a1b9a; /* Medium purple from user file */
+  color: white;
+  border: none;
+  border-radius: 8px; /* Match input radius */
+  font-size: 1.15em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  margin-top: 25px;
+}
+button[type="submit"]:hover {
+  background-color: #4a148c; /* Darker purple from user file */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+/* Helper text */
+small {
+  display: block;
+  margin-top: -5px;
+  margin-bottom: 15px;
+  font-size: 0.9em;
+  color: #6c757d;
+}
+
+/* Basic responsiveness */
+@media (max-width: 600px) {
+   body { padding: 10px; }
+   .container { padding: 20px; margin: 10px auto; }
+   h1 { font-size: 1.6em; }
+   .checkbox-group { grid-template-columns: 1fr; max-height: 300px; }
+   button[type="submit"] { padding: 12px 15px; font-size: 1.1em; }
+}
+
+/* --- Styles for results.html --- */
+.result-section {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #e1bee7; /* Theme color */
+  border-radius: 8px;
+  background-color: #f8f9fa; /* Light background */
+}
+.patient-details {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #e0f7fa; /* Theme color */
+  border-radius: 8px;
+  background-color: #f5f5f5;
+}
+.disclaimer {
+  margin-top: 25px;
+  padding: 15px;
+  background-color: #fffde7; /* Light yellow */
+  border: 1px solid #fff59d;
+  border-radius: 8px;
+  color: #827717; /* Dark yellow/brown text */
+  font-size: 0.9em;
+}
+.error-message {
+  color: #b71c1c; /* Dark red */
+  background-color: #ffcdd2; /* Light red */
+  border: 1px solid #ef9a9a;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+.result-section ul li {
+  margin-bottom: 8px;
+}
+.cache-notice {
+  font-style: italic;
+  color: #555;
+  font-size: 0.9em;
+  margin-left: 10px;
+}
+/* Definition list styling for patient summary */
+dl {
+  display: grid;
+  grid-template-columns: max-content auto;
+  gap: 5px 10px;
+}
+dt {
+  font-weight: bold;
+  color: #006064; /* Dark cyan to match labels */
+}
+dd {
+  margin-left: 0;
+}
+/* Back link styling */
+.back-link {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 8px 15px;
+  background-color: #6c757d; /* Secondary color */
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+.back-link:hover {
+  background-color: #5a6268;
+}
